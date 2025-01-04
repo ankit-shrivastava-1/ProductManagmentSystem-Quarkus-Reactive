@@ -24,7 +24,7 @@ Ensure you have the following installed on your local machine:
 Clone the project repository to your local machine or download the project ZIP.
 ```bash
 $ git clone <repository_url>
-$ cd product-management-system
+$ cd ProductManagmentSystem-Quarkus-Reactive
 ```
 
 ### 2. Configure the Database
@@ -47,7 +47,8 @@ The project includes an `import.sql` file that contains sample data. Ensure this
 ### 4. Build the Application
 Run the following command to build the application using Maven:
 ```bash
-$ mvn clean package
+$ mvn clean
+$ mvn install
 ```
 
 ### 5. Run the Application
@@ -65,6 +66,8 @@ $ mvn test
 
 ### 7. Access the Application
 The following endpoints are available for managing products:
+Also mentioned in Postman collection
+Import the Postman collection to test all the endpoints.
 
 - **GET /products**: Retrieve all products.
 - **GET /products/{id}**: Retrieve a product by ID.
