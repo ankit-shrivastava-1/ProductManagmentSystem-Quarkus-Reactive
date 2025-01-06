@@ -59,8 +59,9 @@ public class ProductResource {
 	@POST
 	@Operation(summary = "Create a new product")
 	public Uni<RestResponse<Product>> createProduct(@Valid Product product) {
-		if (product == null || product.id != null) {
-            throw new WebApplicationException("Id is invalidly set on request.", 422);
+		if (product == null || product.id != null || product.name == null
+				|| product.description == null || product.price == 0.0 || product.price == 0) {
+            throw new WebApplicationException("Product Validation failed.", 422);
         }
 		
 		return Panache
@@ -72,8 +73,9 @@ public class ProductResource {
 	@Path("/{id}")
 	@Operation(summary = "Update an existing product")
 	public Uni<Response> updateProduct(@PathParam("id") Long id, @Valid Product product) {
-		 if (product == null || product.name == null || product.description == null) {
-	            throw new WebApplicationException("Product name or description was not set in request.", 422);
+		 if (product == null || product.name == null || product.description == null
+				 || product.price == 0.0 || product.price == 0) {
+	            throw new WebApplicationException("Product Validation failed.", 422);
 	        }
 		
 		return Panache
