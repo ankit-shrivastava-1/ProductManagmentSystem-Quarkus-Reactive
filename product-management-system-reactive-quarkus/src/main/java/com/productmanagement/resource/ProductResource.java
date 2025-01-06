@@ -100,9 +100,11 @@ public class ProductResource {
 	@GET
 	@Path("/checkProductStock/{id}/{count}")
 	@Operation(summary = "Check Product Quantity")
-	public Uni<Boolean> getProductStockAvailabilty(@PathParam("id") Long id, @PathParam("count") int count)
+	public Uni<String> getProductStockAvailabilty(@PathParam("id") Long id, @PathParam("count") int count)
 			throws ProductNotFoundException {
-		return productService.checkProductStockAvailable(id, count);
+		return productService.checkProductStockAvailable(id, count)
+				.onItem()
+				.transform(j -> j ? "Available Stock : Yes" : "Available Stock : No");
 	}
 
 	@GET
