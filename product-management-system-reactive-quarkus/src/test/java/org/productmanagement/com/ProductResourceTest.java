@@ -48,7 +48,7 @@ class ProductResourceTest {
           .when().get("/api/v1/product/checkProductStock/{id}/{count}")
           .then()
              .statusCode(200)
-             .body(containsString("true"));
+             .body(containsString("Available Stock : Yes"));
     }
     
     @Test
